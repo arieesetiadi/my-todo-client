@@ -41,9 +41,9 @@ export default {
       await todoStore.loadTodos();
     });
 
-    todoStore.$subscribe(({ events }) => {
+    todoStore.$subscribe(() => {
       console.log("TodoStore: Something changes");
-      todos.value = events.newValue;
+      todos.value = todoStore.todos;
       todoListKey.value = Math.floor(Math.random() * 100);
     });
 

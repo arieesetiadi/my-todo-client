@@ -30,10 +30,11 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import TodoList from "@/components/TodoList.vue";
 import TodoAlert from "@/components/TodoAlert.vue";
 import useAlertStore from "@/store/alert.js";
+import useTodoStore from "@/store/todo.js";
 
 export default {
 	name: "Home View",
@@ -44,7 +45,13 @@ export default {
 	setup() {
 		// Properties
 		const alertStore = useAlertStore();
+		const todoStore = useTodoStore();
 		const alertKey = ref(0);
+
+		// onMounted(async () => {
+		// 	await todoStore.loadTodos();
+		// 	console.log(todoStore.todos);
+		// })
 
 		alertStore.$subscribe(({ events }) => {
 			console.log("AlertStore: Something changes");

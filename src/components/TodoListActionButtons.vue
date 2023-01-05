@@ -59,7 +59,6 @@ export default {
     const checkAllLoading = ref(false);
     const uncheckAllLoading = ref(false);
     const todoStore = useTodoStore();
-    const timeOut = 500;
 
     // Methods
     function addTodo() {
@@ -71,10 +70,8 @@ export default {
       checkAllLoading.value = true;
       const response = await todoStore.setAllStatus(true);
       if (response.status === 200) {
-        setTimeout(async () => {
-          await todoStore.loadTodos();
-          checkAllLoading.value = false;
-        }, timeOut);
+        await todoStore.loadTodos();
+        checkAllLoading.value = false;
       }
     }
 
@@ -82,10 +79,8 @@ export default {
       uncheckAllLoading.value = true;
       const response = await todoStore.setAllStatus(false);
       if (response.status === 200) {
-        setTimeout(async () => {
-          await todoStore.loadTodos();
-          uncheckAllLoading.value = false;
-        }, timeOut);
+        await todoStore.loadTodos();
+        uncheckAllLoading.value = false;
       }
     }
 

@@ -92,10 +92,9 @@ export default {
     // Methods
     async function updateTodo() {
       try {
+        todoLoading.value = true;
         const response = await todoStore.updateTodo(todo.value);
         if (response.status === 200) {
-          todoLoading.value = true;
-          setTimeout(async () => {
             // Prepend stored data to todos state
             await todoStore.loadTodos();
             todoLoading.value = false;
@@ -104,7 +103,6 @@ export default {
               type: "success",
               message: "Todo updated successfully 😊"
             })
-          }, 1000);
         }
       } catch (error) {
         todoErrors.value = error.response.data.error.details;
