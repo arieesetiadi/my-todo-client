@@ -4,7 +4,7 @@
 			<v-row>
 				<v-col cols="12">
 					<!-- Todo alert -->
-					<TodoAlert :key="alertKey" class="alert"/>
+					<TodoAlert :key="alertKey" class="alert" />
 				</v-col>
 
 				<!-- Left -->
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style>
-.alert{
+.alert {
 	user-select: none;
 	cursor: pointer;
 }

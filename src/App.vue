@@ -1,7 +1,15 @@
 <template>
-  <router-view />
+	<router-view />
 </template>
 
-<script setup>
-  //
+<script>
+import useAppStore from "@/store/app.js";
+
+export default {
+	setup() {
+		const appStore = useAppStore();
+
+		console.log(appStore.APIBaseURI);
+	},
+};
 </script>
